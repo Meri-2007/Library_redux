@@ -4,33 +4,33 @@
     import { addBook } from "./books.api";
 
     const AddBook = () => {
-        const [author, setAuthor] = useState("");
+        const [author, setAuthor] = useState("")
         const [title,setTitle]=useState("")
-        const [error, setError] = useState("");
+        const [error, setError] = useState("")
         const [photo,setPhoto]=useState("")
 
-        const dispatch = useDispatch();
-        const navigate = useNavigate();
+        const dispatch = useDispatch()
+        const navigate = useNavigate()
 
         const handleSubmit = async (e) => {
             e.preventDefault();
             if (!title) {
-                setError('please write the book name');
-                return;       
+                setError('please write the book name')
+                return
             }
             if (!author) {
-                setError('please write the book title');
+                setError('please write the book title')
                 return;       
             }
-            setError('');
+            setError('')
 
            
             
             try {
-                await dispatch(addBook({author:author,title:title,photo:photo})).unwrap();
-                navigate('/');
+                await dispatch(addBook({author:author,title:title,photo:photo})).unwrap()
+                navigate('/')
             } catch (err) {
-                setError('try again');
+                setError('try again')
             }
         }
 
